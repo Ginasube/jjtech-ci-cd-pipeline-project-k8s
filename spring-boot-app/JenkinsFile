@@ -62,14 +62,12 @@ pipeline {
     }
    
 
-    stage('Build and Test') {
-      steps {
-        // sh 'ls -ltr'
-        // builds the project and create a JAR file
-        sh 'cd spring-boot-app && mvn -U clean package'
-      }
-      
+   stage('Build and Test') {
+    steps {
+        // builds the project and create a JAR file using custom settings.xml
+        sh 'cd spring-boot-app && mvn -U clean package -s /path/to/your/settings.xml'
     }
+}
 
 
     
