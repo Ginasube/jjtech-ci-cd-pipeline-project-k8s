@@ -63,13 +63,15 @@ pipeline {
    
 
     stage('Build and Test') {
-      steps {
-        // sh 'ls -ltr'
-        // builds the project and create a JAR file
+    steps {
+        // Remove local Maven repository to ensure a clean build
+        sh 'rm -rf ~/.m2/repository'
+
+        // Build the project and create a JAR file
         sh 'cd spring-boot-app && mvn -U clean package -s ../nexus-setup/settings.xml'
-      }
-      
     }
+}
+
 
 
     
