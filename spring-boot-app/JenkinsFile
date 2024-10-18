@@ -62,16 +62,20 @@ pipeline {
     }
    
 
-    stage('Build and Test') {
+   stage('Build and Test') {
     steps {
-        // Remove local Maven repository to ensure a clean build
+        // Clear local Maven repository to ensure a clean build
         sh 'rm -rf ~/.m2/repository'
-
+        
         // Build the project and create a JAR file
-        sh 'cd spring-boot-app && mvn -U clean package -s ../nexus-setup/settings.xml'
+        script {
+            def result = sh(script: 'cd spring-boot-app && mvn -U clean package -s ../nexus-setup/settings.xml', returnStatus: true)
+            if (result != 0) {
+                error("Maven build failed!")
+            }
+        }
     }
 }
-
 
 
     
