@@ -1,24 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <settings xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
   <localRepository>/var/lib/jenkins/.m2/repository</localRepository>
 
-<servers>
-   <server>
-        <id>nexus</id>
-        <username></username>
-        <password></password>
+  <servers>
+    <server>
+      <id>nexus</id>
+      <username></username>  <!-- You need to specify your Nexus username -->
+      <password></password>  <!-- You need to specify your Nexus password -->
     </server>
-</servers>
+  </servers>
 
-<mirrors>
+  <mirrors>
     <mirror>
       <id>nexus</id>
       <name>nexus</name>
-      <url>http://172.31.80.22:8081/repository/maven_project/</url>               <!--Replace the Nexus Private IP in this line-->
+      <url>http://172.31.80.22:8081/repository/maven_project/</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
